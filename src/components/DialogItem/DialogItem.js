@@ -7,6 +7,8 @@ import './DialogItem.scss';
 
 import IconReaded from '../IconReaded/index';
 import Avatar from 'components/Avatar/Avatar';
+import { useDispatch, useSelector } from 'react-redux';
+import dialogsActions from 'redux/actions/dialogsActions'
 
 const getMessageTime = created_at => {
   if (isToday(created_at)) {
@@ -16,13 +18,20 @@ const getMessageTime = created_at => {
   }
 }
 
-const DialogItem = ({ user, text, created_at, unreaded, isMe, avatar }) => {
+const DialogItem = ({id, user, text, created_at, unreaded, isMe, avatar }) => {
+  const dispatch = useDispatch();
+  const dialogId = useSelector(state => state.dialogsReducer.currentDialog);
+
+  const isCurrentContact = dialogId === id;
 
   return (
   <div
     className={classNames('dialogs__item', {
       'dialogs__item--online': user.isOnline,
     })}
+    onClick={() => {
+      dispatch(dialogsActions.setCurrentDialog(id))
+    }}
   >
     <div className="dialogs__item-avatar">
       {/* <img src={user.avatar} alt={`${user.fullname} avatar`}/> */}

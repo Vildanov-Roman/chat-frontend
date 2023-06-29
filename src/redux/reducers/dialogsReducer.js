@@ -1,15 +1,28 @@
 const initialState = {
   items: [],
+  currentDialog: '',
+  messages: [],
 }
 
 const dialogsReducer = (state = initialState, {type, payload}) => {
   switch (type) {
     case "DIALOGS:SET_ITEMS":
       return {
-        items: payload
+        ...state,
+        items: payload,
       };  
+      case "DIALOGS:SET_CURRENT_DIALOG":
+      return {
+        ...state,
+        currentDialog: payload,
+      }; 
+      // case "DIALOGS:SET_MESSAGES":
+      // return {
+      //   ...state,
+      //   messages: payload,
+      // }; 
     default:
-      return state
+      return state;
   }
 };
 

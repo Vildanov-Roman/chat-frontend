@@ -6,13 +6,15 @@ import Dialogs from 'components/Dialogs/Dialogs';
 
 const DialogsTab = ({fetchDialogs, userId }) => {
 
-  const items = useSelector(state => state.dialogReducer);
+  // items - contacts
+
+  const items = useSelector(state => state.dialogsReducer.items);
+ 
   const [inputValue, setValue] = useState('');
-  const [filtred, setFiltredItems] = useState([]);
-  // const items = useSelector(state => state.dialogs.dialods);
+  const [filtered, setFilteredItems] = useState([]);
 
   const onChangeInput = (value = '') => {
-    setFiltredItems(
+    setFilteredItems(
       items.filter(
         dialog =>
           dialog.user.fullname.toLowerCase().indexOf(value.toLowerCase()) >= 0
@@ -22,10 +24,10 @@ const DialogsTab = ({fetchDialogs, userId }) => {
   };
 
   useEffect(() => {
-    if (!items) {
+    if (!items?.length) {
       fetchDialogs()
     } else {
-      setFiltredItems(items)
+      setFilteredItems(items)
     } 
     
   }, [items, fetchDialogs])
@@ -33,7 +35,7 @@ const DialogsTab = ({fetchDialogs, userId }) => {
   return (
     <Dialogs
       userId={userId}
-      items={filtred}
+      items={filtered}
       onSearch={onChangeInput}
       inputValue={inputValue}
     />

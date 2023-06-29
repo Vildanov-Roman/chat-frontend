@@ -7,11 +7,11 @@ import {
 import { Button} from 'antd';
 
 import DialogsTab from 'Containers/Dialogs';
+import MessagesTab from 'Containers/Messages'
 
 import './home.scss';
 import Status from 'components/Status/Status';
 import ChatInput from 'components/ChatInput/ChatInput';
-import Messages from 'components/Messages/Messages';
 
 const Home = () => {
   // const items = ;
@@ -46,7 +46,7 @@ const Home = () => {
             <Button shape="circle" icon={<EllipsisOutlined style={{ fontSize: '22px' }}/>} />
           </div>
           <div className="chat__dialog-messages">
-            <Messages />
+            <MessagesTab />
           </div>
           <div className="chat__dialog-input">
             <ChatInput />
