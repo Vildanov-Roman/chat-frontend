@@ -8,15 +8,17 @@ import { Time } from 'components/Time/time';
 import IconReaded from 'components/IconReaded';
 import convertCurrentTime from 'utils/helper/convertCurrentTime';
 
+
 import wave from 'assets/img/wave.svg';
 import play from 'assets/img/play.svg';
 import pause from 'assets/img/pause.svg';
 
 import './message-style.scss';
+import Avatar from '../Avatar/Avatar';
 
 const MessageAudio = ({audioSrc}) => {
   const audioElem = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(false);  
+  const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [progress, setProgress] = useState(0);
 
@@ -95,8 +97,7 @@ const Message = ({
   isReaded,
   attachments,
   isTyping,
-}) => {  
-
+}) => {
   return (
     <div
       className={classNames(
@@ -110,7 +111,7 @@ const Message = ({
       <div className="message__content">
         <IconReaded isMe={isMe} isReaded={isReaded} />
         <div className="message__avatar">
-          <img src={avatar} alt={`Avatar ${user.fullname}`} />
+          <Avatar user={user} />
         </div>
         <div className="message__info">
           {(audio || text || isTyping) && (

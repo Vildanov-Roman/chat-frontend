@@ -1,24 +1,27 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 
 import Messages from 'components/Messages/Messages';
 import messagesActions from '../redux/actions/messagesActions';
 
-const MessagesTab = () => {
-
+const MessagesTab = ({isLoading}) => {
   // items - contacts
-  const items = useSelector(state => state.dialogsReducer.items); 
+  const messagesRef = useRef(null);
+  const items = useSelector(state => state.dialogsReducer.items);
   const dialogId = useSelector(state => state.dialogsReducer.currentDialog);
 
   useEffect(() => {
-    if (!dialogId) {
-      return;
+    if (dialogId) {
+      messagesActions.fetchMessages(dialogId);
     }
-    messagesActions.fetchMessages(dialogId);
-  }, [dialogId])
-  
+  }, [dialogId]);
+
+  useEffect(() => {
+      messagesRef.current.scrollTo(0, 9999);
+  }, [items]);
+
   return (
-    <Messages items={items}/>
+    <Messages blockRef={messagesRef} items={items} isLoading={isLoading}/>
   );
 };
 

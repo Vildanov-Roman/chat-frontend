@@ -1,5 +1,6 @@
 const initialState = {
   items: null,
+  isLoading: false,
 }
 
 const messagesReducer = (state = initialState, {type, payload}) => {
@@ -8,7 +9,13 @@ const messagesReducer = (state = initialState, {type, payload}) => {
       return {
         ...state,
         items: payload,
-      };  
+        isLoading: false,
+      };
+    case "MESSAGES:SET_IS_LOADING":
+      return {
+        ...state,
+        isLoading: payload,
+      };
     default:
       return state;
   }
