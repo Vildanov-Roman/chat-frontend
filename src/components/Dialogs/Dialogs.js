@@ -7,7 +7,7 @@ import dialogsActions from '../../redux/actions/messagesActions';
 import DialogItem from '../DialogItem/DialogItem';
 import './Dialogs.scss';
 
-const Dialogs = ({id, items, userId, onSearch, inputValue }) => {
+const Dialogs = ({ items, userId, onSearch, currentDialogId, inputValue }) => {
 
   const dialogId = useSelector(state => state.dialogsReducer.currentDialog);
 
@@ -37,6 +37,7 @@ const Dialogs = ({id, items, userId, onSearch, inputValue }) => {
           avatar={item.user.avatar}
           unreaded={0}
           isMe={item.user._id === userId}
+          currentDialogId={currentDialogId}
         />
       ))
     ) : (

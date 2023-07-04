@@ -4,12 +4,12 @@ import { connect, useSelector } from 'react-redux';
 import dialogsActions from 'redux/actions/dialogsActions';
 import Dialogs from 'components/Dialogs/Dialogs';
 
-const DialogsTab = ({fetchDialogs, userId }) => {
+const DialogsTab = ({fetchDialogs, userId, currentDialogId, setCurrentDialogId }) => {
 
   // items - contacts
 
   const items = useSelector(state => state.dialogsReducer.items);
- 
+
   const [inputValue, setValue] = useState('');
   const [filtered, setFilteredItems] = useState([]);
 
@@ -28,8 +28,8 @@ const DialogsTab = ({fetchDialogs, userId }) => {
       fetchDialogs()
     } else {
       setFilteredItems(items)
-    } 
-    
+    }
+
   }, [items, fetchDialogs])
 
   return (
@@ -38,6 +38,8 @@ const DialogsTab = ({fetchDialogs, userId }) => {
       items={filtered}
       onSearch={onChangeInput}
       inputValue={inputValue}
+      onSelectDialog={setCurrentDialogId}
+      currentDialog={currentDialogId}
     />
   );
 };

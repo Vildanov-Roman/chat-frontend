@@ -16,7 +16,8 @@ const Avatar = ({ user }) => {
     );
   } else {
     const { color, colorLighten } = generateAvatar(user._id);
-    const firstChar = user.fullname;
+    const firstChar = user.fullname
+    console.log(firstChar);
     return (
       <div
         style={{

@@ -18,7 +18,7 @@ const getMessageTime = created_at => {
   }
 }
 
-const DialogItem = ({id, user, text, created_at, unreaded, isMe, avatar }) => {
+const DialogItem = ({id, user, text, created_at, unreaded, isMe, avatar}) => {
   const dispatch = useDispatch();
   const dialogId = useSelector(state => state.dialogsReducer.currentDialog);
 
@@ -28,6 +28,7 @@ const DialogItem = ({id, user, text, created_at, unreaded, isMe, avatar }) => {
   <div
     className={classNames('dialogs__item', {
       'dialogs__item--online': user.isOnline,
+      'dialogs__item--selected': isCurrentContact,
     })}
     onClick={() => {
       dispatch(dialogsActions.setCurrentDialog(id))
@@ -46,7 +47,7 @@ const DialogItem = ({id, user, text, created_at, unreaded, isMe, avatar }) => {
         </span>
       </div>
       <div className="dialogs__item-info-bottom">
-        <p>{text}</p>       
+        <p>{text}</p>
         {unreaded > 0 && (
           <div className="dialogs__item-info-bottom-count">{unreaded > 9 ? '+9' : unreaded}</div>
         )}
