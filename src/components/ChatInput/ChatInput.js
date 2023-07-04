@@ -1,11 +1,14 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import { Input, Button } from 'antd';
-import { SmileOutlined, CameraOutlined, AudioOutlined, CheckCircleOutlined } from '@ant-design/icons';
+import { SmileOutlined, AudioOutlined, CheckCircleOutlined } from '@ant-design/icons';
+
+
 
 import './ChatInput.scss';
+import Uploader from '../Uploader/Uploader';
 
-const ChatInput = props => {
+const ChatInput = () => {
 
     const [value, setValue] = useState('');
     const handleChange = (e) => {
@@ -19,9 +22,9 @@ const ChatInput = props => {
       </div>
       <Input onChange={handleChange} size='large' placeholder="Type your message" />
       <div className="chat-input__actions">
-      <Button shape="circle" icon={<CameraOutlined />} />
+      <Uploader/>
         {!value ? <Button shape="circle" icon={<AudioOutlined />} /> : <Button shape="circle" icon={<CheckCircleOutlined />} />}
-        
+
       </div>
     </div>
   );
