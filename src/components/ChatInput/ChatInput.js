@@ -2,12 +2,12 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import { Input, Button } from 'antd';
 import { SmileOutlined, AudioOutlined, CheckCircleOutlined } from '@ant-design/icons';
+
 import data from '@emoji-mart/data'
 import Picker from '@emoji-mart/react'
 
 import './ChatInput.scss';
 import Uploader from '../Uploader/Uploader';
-
 
 const ChatInput = () => {
 
