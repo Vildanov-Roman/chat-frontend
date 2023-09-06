@@ -7,10 +7,8 @@ import Block from 'components/Block/block';
 import Button from 'components/Button/button';
 import validate from 'utils/helper/validateField';
 
-
-
 const Loginform = props => {
-  const { values, touched, errors, handleChange, handleBlur, handleSubmit } =
+  const { values, touched, errors, handleChange, handleBlur, handleSubmit} =
     props;
   return (
     <div>
@@ -63,7 +61,7 @@ const Loginform = props => {
             />
           </Form.Item>
 
-          <Form.Item>
+          <Form.Item>            
             <Button onClick={handleSubmit} type="primary" size="large">
               Войти в аккаунт
             </Button>
