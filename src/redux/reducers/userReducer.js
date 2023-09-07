@@ -1,7 +1,7 @@
 const initialState = {
   data: null,
   token: window.localStorage.token,
-  isAuth: !!window.localStorage.token
+  isAuth: false
 };
 
 const userReducer = (state = initialState, { type, payload }) => {

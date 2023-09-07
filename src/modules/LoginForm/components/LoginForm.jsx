@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 
 import Block from 'components/Block/block';
 import Button from 'components/Button/button';
-import validate from 'utils/helper/validateField';
+// import validate from 'utils/helper/validateField';
 
 const Loginform = props => {
-  const { values, touched, errors, handleChange, handleBlur, handleSubmit} =
+  const { handleChange, handleBlur, handleSubmit} =
     props;
   return (
     <div>
@@ -20,8 +20,8 @@ const Loginform = props => {
         <Form onSubmit={handleSubmit} className="login-form">
           <Form.Item
             name="email"
-            validateStatus={validate('email', touched, errors)}
-            help={!touched.email ? '' : errors.email}
+            // validateStatus={validate('email', touched, errors)}
+            // help={!touched.email ? '' : errors.email}
           >
             <Input
               id="email"
@@ -32,7 +32,7 @@ const Loginform = props => {
                 />
               }
               placeholder="E-mail"
-              value={values.email}
+              // value={values.email}
               onChange={handleChange}
               onBlur={handleBlur}
             />
@@ -40,8 +40,8 @@ const Loginform = props => {
 
           <Form.Item
             name="password"
-            validateStatus={validate('password', touched, errors)}
-            help={!touched.password ? '' : errors.password}
+            // validateStatus={validate('password', touched, errors)}
+            // help={!touched.password ? '' : errors.password}
             hasFeedback
           >
             <Input
@@ -55,7 +55,7 @@ const Loginform = props => {
               size="large"
               type="password"
               placeholder="Password"
-              value={values.password}
+              // value={values.password}
               onChange={handleChange}
               onBlur={handleBlur}
             />
