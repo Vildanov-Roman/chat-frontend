@@ -7,3 +7,4 @@ export {default as Time} from './Time';
 export {default as IconReaded} from './IconReaded';
 export {default as Status} from './Status';
 export {default as ChatInput} from './ChatInput';
+export {default as FormField} from './FormField';

@@ -1,15 +1,16 @@
 import React from 'react';
 import { Form, Input } from 'antd';
 import {
+  MailOutlined,
   LockOutlined,
   UserOutlined,
-  MailOutlined,
   InfoCircleTwoTone,
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
 import Button from 'components/Button/button';
 import Block from 'components/Block/block';
+// import FormField from 'components/FormField/index';
 import validate from 'utils/helper/validateField';
 
 const success = false;
@@ -26,6 +27,26 @@ const RegisterForm = props => {
       <Block>
         {!success ? (
           <Form onSubmit={handleSubmit} className="login-form">
+            {/* <FormField
+              name="email"
+              icon="mail"
+              placeholder='E-mail'
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              touched={touched}
+              errors={errors}
+              values={values}
+            />
+            <FormField
+              name="fullname"
+              icon="user"
+              placeholder='Введите Имя'
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              touched={touched}
+              errors={errors}
+              values={values}
+            /> */}
             <Form.Item
               name="email"
               validateStatus={validate('email', touched, errors)}
@@ -47,13 +68,19 @@ const RegisterForm = props => {
               />
             </Form.Item>
             <Form.Item
-              name="name"
+              name="fullname"
+              validateStatus={validate('fullname', touched, errors)}
+              hasFeedback
+              help={!touched.fullname ? '' : errors.fullname}
               rules={[{ required: true, message: 'Please enter your Name!' }]}
             >
               <Input
                 prefix={<UserOutlined className="site-form-item-icon" />}
                 type="name"
                 placeholder="name"
+                value={values.fullname}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
             </Form.Item>
             <Form.Item
@@ -80,12 +107,18 @@ const RegisterForm = props => {
             </Form.Item>
             <Form.Item
               name="confirm"
-              rules={[{ required: true, message: 'Please confirm password!' }]}
+              validateStatus={validate('confirm', touched, errors)}
+              help={!touched.confirm ? '' : errors.confirm}
+              hasFeedback
             >
               <Input
-                prefix={<LockOutlined className="site-form-item-icon" />}
+                prefix={<LockOutlined type="lock" style={{ color: 'rgba()0,0,0,.25' }}/>}
+                size="large"
                 type="password"
-                placeholder="confirm password"
+                placeholder="Confirm password"
+                value={values.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
             </Form.Item>
             <Form.Item>
@@ -104,7 +137,7 @@ const RegisterForm = props => {
             </div>
             <h2>Подтвердите свой аккаунт</h2>
             <p>
-              На Вашу посту отправлено письмо со ссылкой на подтверждение
+              На Вашу посчу отправлено письмо со ссылкой на подтверждение
               аккаунта
             </p>
           </div>

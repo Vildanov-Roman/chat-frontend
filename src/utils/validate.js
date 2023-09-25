@@ -7,6 +7,11 @@ const validate = ({ isAuth, values, errors }) => {
         errors.email = "Неверный E-Mail";
       }
     },
+    fullname: value => {
+      if (!isAuth && !value) {
+        errors.fullname = "Введите Имя и Фамилию";
+      }
+    },
     password: value => {
       if (!value) {
         errors.password = "Введите пароль";
@@ -17,16 +22,14 @@ const validate = ({ isAuth, values, errors }) => {
         errors.password = "Слишком лёгкий пароль";
       }
     },
-    password_2: value => {
+    confirm: value => {
       if (!isAuth && value !== values.password) {
-        errors.password_2 = "Пароли не совпадают";
+        errors.confirm = "Пароли не совпадают";
       }
-    },
-    fullname: value => {
-      if (!isAuth && !value) {
-        errors.fullname = "Укажите свое имя и фамилию";
+      if (!value) {
+        errors.confirm = 'Заполните поле';
       }
-    }
+    }    
   };
 
   Object.keys(values).forEach(key => rules[key] && rules[key](values[key]));

@@ -12,6 +12,7 @@ const App = () => {
   return (
     <div className="wrapper">
       <Routes>
+        <Route path='/' element={<Loginform/>}/>
         <Route path='/login' element={<Loginform/>}/>
         <Route path='/register' element={<RegisterForm/>}/>
         <Route

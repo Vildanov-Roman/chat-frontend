@@ -7,14 +7,13 @@ export default withFormik({
   enableReinitialize: true,
   mapPropsToValues: () => ({
     email: "",
-    name: "",
+    fullname: "",
     password: "",
     confirm: ""
   }),
   validate: values => {
-    const errors = {};
-    validateFunc({isAuth: true, values, errors})
-
+    let errors = {};
+    validateFunc({isAuth: false, values, errors})
     return errors;
   },
 
