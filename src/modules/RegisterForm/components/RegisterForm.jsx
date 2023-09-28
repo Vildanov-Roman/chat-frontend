@@ -10,7 +10,6 @@ import { Link } from 'react-router-dom';
 
 import Button from 'components/Button/button';
 import Block from 'components/Block/block';
-// import FormField from 'components/FormField/index';
 import validate from 'utils/helper/validateField';
 
 const success = false;
@@ -26,27 +25,7 @@ const RegisterForm = props => {
       </div>
       <Block>
         {!success ? (
-          <Form onSubmit={handleSubmit} className="login-form">
-            {/* <FormField
-              name="email"
-              icon="mail"
-              placeholder='E-mail'
-              handleChange={handleChange}
-              handleBlur={handleBlur}
-              touched={touched}
-              errors={errors}
-              values={values}
-            />
-            <FormField
-              name="fullname"
-              icon="user"
-              placeholder='Введите Имя'
-              handleChange={handleChange}
-              handleBlur={handleBlur}
-              touched={touched}
-              errors={errors}
-              values={values}
-            /> */}
+          <Form onSubmit={handleSubmit} className="login-form">            
             <Form.Item
               name="email"
               validateStatus={validate('email', touched, errors)}

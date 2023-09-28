@@ -1,7 +1,5 @@
 import LoginForm from '../LoginForm';
 
-// import { connect } from 'react-redux';
-
 import { withFormik } from 'formik';
 import validateForm from 'utils/validate.js';
 
@@ -9,7 +7,6 @@ import userActions from "redux/actions/usersActions";
 
 import store from "redux/store";
 
-// const LoginFormConnected = connect(state => state, userActions)(LoginForm);
 
 const LoginFormContainer = withFormik({
   enableReinitialize: true,
