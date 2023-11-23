@@ -28,8 +28,11 @@ const renderTextInfo = ({ hash, verified }) => {
   }
 };
 
-const CheckEmailInfo = ({ location, history }) => {
+const CheckEmailInfo = (props) => {
+  console.log(props);
+
   const hash = location.search.split('hash=')[1];
+  console.log(hash);
   const [verified, setVerified] = useState(false);
   const [checking, setChecking] = useState(!!hash);
   const [info, setInfo] = useState(renderTextInfo({ hash, checking, verified }));

@@ -16,4 +16,4 @@ Time.propTypes = {
     date: PropTypes.string
 }
 
-// export default Time;
+export default Time;
