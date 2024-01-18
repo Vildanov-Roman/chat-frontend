@@ -57,7 +57,7 @@ const CheckEmailInfo = (props) => {
           setStatus({ verified: false, checking: false });
         });
     }
-  }, [hash]);
+  }, [hash, setStatus]);
 
   console.log({ info, checking, verified, hash });
 
