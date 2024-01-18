@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Result, Button, Spin } from 'antd';
-import { useLocation, useNavigate } from 'react-router-dom';
+// import { useLocation, useNavigate } from 'react-router-dom';
 
 import userApi from 'utils/api/user';
 import { Block } from 'components';
@@ -29,10 +29,9 @@ const renderTextInfo = ({ hash, verified }) => {
   }
 };
 
-const CheckEmailInfo = (props) => {
-  const location = useLocation(); // Use useLocation hook
-  const history = useNavigate(); // Use useHistory hook
-  console.log(props);
+const CheckEmailInfo = ({ location, history }) => {
+  // const location = useLocation();
+  // const history = useNavigate();
 
   const hash = location.search.split('hash=')[1];
   console.log(hash);
@@ -75,6 +74,7 @@ const CheckEmailInfo = (props) => {
                 <Button type="primary" onClick={() => history.push('/signin')}>
                   Войти
                 </Button>
+
               )
             }
           />
